@@ -2,6 +2,7 @@ package tn.esprit.SkiStationProject;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -14,11 +15,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.SkiStationProject.repositories.InstructorRepository;
 import tn.esprit.SkiStationProject.services.InstructorServicesImpl;
 import tn.esprit.SkiStationProject.entities.Instructor;
 import tn.esprit.SkiStationProject.repositories.InstructorRepository;
-
+@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 
 public class InstructorTestMockito {
 

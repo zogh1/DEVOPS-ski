@@ -80,6 +80,11 @@
             <version>5.8.0</version> <!-- Use the appropriate version -->
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
