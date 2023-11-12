@@ -1,44 +1,60 @@
-version: "3.3"
+version: "3.8"
 
 services:
 
-  mysql-db:
-    image: mysql:5.6
-    container_name: mysql-db
+  mysql-container:
+    image: mysql:latest
+    restart: always
+    container_name: mysql-container
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_DATABASE: 'SkiStationDB'
+      MYSQL_DATABASE: 'devops'
     ports:
-      - target: 3306
-        published: 3306
-        protocol: tcp
+      - 3306:3306
+    networks:
+      - mynetwork
     volumes:
-      - /home/mysql/data:/home/vagrant/mysql:rw
+      - mysql:/var/lib/mysql
+
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    container_name: phpmyadmin-container
+    ports:
+      - 8090:80
+    environment:
+      PMA_HOST: mysql-container
+    networks:
+      - mynetwork
 
   springboot-app:
-
     image: zoghlami19/devopsrepository:latest
     container_name: springboot-app
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/SkiStationDB?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/SkiStationDB?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      MYSQL_HOST: mysql-db
+      MANAGEMENT_ENDPOINTS_PROMETHEUS_ENABLED: true
+      MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED: true
+
+      MYSQL_HOST: mysql-container
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root
       MYSQL_DATABASE: SkiStationDB
     restart: on-failure
     ports:
-      - 8089:8089
+      - 8089:8080
     links:
-      - mysql-db
+      - mysql-container
+    networks:
+      - mynetwork
+    depends_on:
+      - mysql-container
 
-  angular-app:
+networks:
+  mynetwork:
 
-    image: adimoss/angularimage:latest
-    container_name: angularimage
-    ports:
-      - 4200:80
-    links:
-      - springboot-app
+volumes:
+  mysql:
