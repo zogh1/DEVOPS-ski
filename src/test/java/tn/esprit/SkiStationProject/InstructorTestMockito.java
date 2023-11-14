@@ -61,14 +61,17 @@ public class InstructorTestMockito {
         assertEquals(Instructor, result);
     }
 
-    @Test
-    public void testRetriveInstructor() {
-        Long idToret = 1L;
+@Test
+public void testRetriveInstructor() {
+    Long idToRetrieve = 1L;
+    Instructor instructor = new Instructor();
+    when(instructorRepository.findById(idToRetrieve)).thenReturn(Optional.of(instructor));
 
-        InstructorServices.retrieveInstructor(idToret);
+    Instructor result = instructorServices.retrieveInstructor(idToRetrieve);
 
-        verify(InstructorRepository).findById(idToret);
-    }
+    assertEquals(instructor, result);
+}
+
 
     @Test
     public void testUpdateInstructor() {
