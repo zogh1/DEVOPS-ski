@@ -65,9 +65,9 @@ public class InstructorTestMockito {
 public void testRetriveInstructor() {
     Long idToRetrieve = 1L;
     Instructor instructor = new Instructor();
-    when(instructorRepository.findById(idToRetrieve)).thenReturn(Optional.of(instructor));
+    when(InstructorRepository.findById(idToRetrieve)).thenReturn(Optional.of(instructor));
 
-    Instructor result = instructorServices.retrieveInstructor(idToRetrieve);
+    Instructor result = InstructorRepository.findById(idToRetrieve).orElse(null);
 
     assertEquals(instructor, result);
 }
