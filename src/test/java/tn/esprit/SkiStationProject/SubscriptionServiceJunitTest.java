@@ -26,7 +26,6 @@ import java.time.LocalDate;
 import static tn.esprit.SkiStationProject.entities.enums.TypeSubscription.ANNUAL;
 import static tn.esprit.SkiStationProject.entities.enums.TypeSubscription.MONTHLY;
 
-@SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
 public class SubscriptionServiceJunitTest {
 
