@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
 import tn.esprit.SkiStationProject.entities.Subscription;
 import tn.esprit.SkiStationProject.entities.enums.TypeSubscription;
+
 
 public interface ISubscriptionServices {
 

@@ -6,6 +6,9 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Date;
@@ -29,10 +32,10 @@ import static tn.esprit.SkiStationProject.entities.enums.TypeSubscription.MONTHL
 @TestMethodOrder(OrderAnnotation.class)
 public class SubscriptionServiceJunitTest {
 
-    @Autowired
+    @Mock
     ISubscriptionServices SubscriptionServices;
 
-    @Autowired
+    @InjectMocks
     SubscriptionRepository SubscriptionRepository;
 
     LocalDate date1=LocalDate.parse("2023-02-13");
