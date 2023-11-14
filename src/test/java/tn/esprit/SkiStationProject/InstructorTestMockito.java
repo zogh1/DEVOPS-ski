@@ -21,8 +21,7 @@ import tn.esprit.SkiStationProject.repositories.InstructorRepository;
 import tn.esprit.SkiStationProject.services.InstructorServicesImpl;
 import tn.esprit.SkiStationProject.entities.Instructor;
 import tn.esprit.SkiStationProject.repositories.InstructorRepository;
-@SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
+
 
 public class InstructorTestMockito {
 
