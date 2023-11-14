@@ -38,7 +38,7 @@ public class SubscriptionServiceJunitTest {
 
     LocalDate date1=LocalDate.parse("2023-02-13");
     LocalDate date2=LocalDate.parse("2024-01-13");
-    LocalDate date3=LocalDate.parse("2020-05-1");
+    LocalDate date3=LocalDate.parse("2020-05-01");
     LocalDate date4=LocalDate.parse("2023-06-20");
     Subscription s1 = new Subscription(date1,date2,5.5f,ANNUAL);
     Subscription s2 = new Subscription( date3,date4,7.5f,MONTHLY);
